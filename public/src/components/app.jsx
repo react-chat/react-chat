@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import Chat from './Chat.jsx';
 
 class App extends Component {
   constructor(props){
     super(props);
-
 
   }
 
   render(){
     return (
       <div>
-        <h1>this is the app page</h1>
+        <h1>React Chat component</h1>
+        <p>You can insert this chat component anywhere.</p>
+        <Chat />
       </div>
     )
   }

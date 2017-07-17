@@ -6,7 +6,8 @@
   "scripts": {
     "start":"node index",
     "nodemon": "webpack -d --watch && nodemon index",
-    "test": "jest"
+    "test": "jest",
+    "webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",
