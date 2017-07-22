@@ -3,7 +3,7 @@ import ChatHeader from './chatHeader.jsx';
 import ChatMessages from './chatMessages.jsx';
 import ChatInputBox from './chatInputBox.jsx';
 
-const ChatWindow = () => (
+const ReactChat = () => (
   <div>
     <ChatHeader />
     <ChatMessages />
@@ -11,4 +11,4 @@ const ChatWindow = () => (
   </div>
 )
 
-export default ChatWindow;
+export default ReactChat;
