@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ChatWindow from './chatWindow.jsx';
 
 class App extends Component {
   constructor(props){
@@ -10,7 +11,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        <h1>this is the app page</h1>
+        <ChatWindow className="chatWindow"/>
       </div>
     )
   }
