@@ -1,15 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SRC_DIR = path.resolve(__dirname, 'public');
 const BUILD_DIR = path.resolve(__dirname, 'public/dist');
 
 module.exports = {
+<<<<<<< HEAD
   entry: path.resolve(SRC_DIR, 'src/index.jsx'), // 'src/index.jsx'; 'src/components/app.jsx'
+=======
+  entry: [path.resolve(SRC_DIR, 'src/index.jsx'), path.resolve(SRC_DIR,'styles/scss/main.scss')],
+>>>>>>> dev
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -19,7 +25,23 @@ module.exports = {
         options: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(
+          {fallback: 'style-loader', use: ['css-loader', 'sass-loader']}
+        )
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        sassLoader: {
+          includePaths: ['public/styles/scss']
+        }
+      }
+    }),
+    new ExtractTextPlugin({filename: '[name].bundle.css', allChunks: true})
+  ]
 };

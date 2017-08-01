@@ -1,18 +1,21 @@
 const express = require('express');
-const socket = require('socket.io');
-
-const port = process.env.PORT || 8080;
+const path = require('path');
 const app = express();
-const server = app.listen(port, function() {
-  console.log('+++server listening on ', port);
+
+app.use(express.static(path.resolve(__dirname, './public')));
+
+app.set('port', process.env.PORT || 5000);
+app.listen(app.get('port'), (err) => {
+  if (err) {
+    return console.log('Error starting server: ', err);
+  }
+  return console.log('Listening on port: ', app.get('port'));
 });
 
-app.use(express.static('public'))
-
+const socket = require('socket.io');
 const io = socket(server);
-
 io.on('connection', function(socket){
 
 })
 
-module.exports = app; 
+module.exports.app = app;
